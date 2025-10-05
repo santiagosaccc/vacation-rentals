@@ -22,6 +22,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
+    
     ];
 
     /**
@@ -33,6 +35,15 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+    public function isOwner(): bool
+{
+    return $this->role === 'owner';
+}
+
+public function isGuest(): bool
+{
+    return $this->role === 'guest';
+}
 
     /**
      * Get the attributes that should be cast.
